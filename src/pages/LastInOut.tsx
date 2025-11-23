@@ -51,12 +51,18 @@ export function LastInOut() {
     lastIn2Time: '',
     lastIn2Name: '',
     lastIn2Amount: '',
+    lastIn3Time: '',
+    lastIn3Name: '',
+    lastIn3Amount: '',
     lastOut1Time: '',
     lastOut1Name: '',
     lastOut1Amount: '',
     lastOut2Time: '',
     lastOut2Name: '',
-    lastOut2Amount: ''
+    lastOut2Amount: '',
+    lastOut3Time: '',
+    lastOut3Name: '',
+    lastOut3Amount: ''
   });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -75,12 +81,18 @@ export function LastInOut() {
       lastIn2Time: '',
       lastIn2Name: '',
       lastIn2Amount: '',
+      lastIn3Time: '',
+      lastIn3Name: '',
+      lastIn3Amount: '',
       lastOut1Time: '',
       lastOut1Name: '',
       lastOut1Amount: '',
       lastOut2Time: '',
       lastOut2Name: '',
-      lastOut2Amount: ''
+      lastOut2Amount: '',
+      lastOut3Time: '',
+      lastOut3Name: '',
+      lastOut3Amount: ''
     });
     setEditingId(null);
   };
@@ -119,11 +131,11 @@ export function LastInOut() {
   };
 
   const exportToCSV = () => {
-    const headers = ['Date Issued', 'Bank Name', 'Account Holder', 'Account Number', 'Balance', 'Issues', 'Last In 1 Time', 'Last In 1 Name', 'Last In 1 Amount', 'Last In 2 Time', 'Last In 2 Name', 'Last In 2 Amount'];
+    const headers = ['Date Issued', 'Bank Name', 'Account Holder', 'Account Number', 'Balance', 'Issues', 'Last In 1 Time', 'Last In 1 Name', 'Last In 1 Amount', 'Last In 2 Time', 'Last In 2 Name', 'Last In 2 Amount', 'Last In 3 Time', 'Last In 3 Name', 'Last In 3 Amount', 'Last Out 1 Time', 'Last Out 1 Name', 'Last Out 1 Amount', 'Last Out 2 Time', 'Last Out 2 Name', 'Last Out 2 Amount', 'Last Out 3 Time', 'Last Out 3 Name', 'Last Out 3 Amount'];
     const csvData = [
       headers.join(','),
       ...records.map(r => 
-        [r.dateIssued, r.bankName, r.bankAccountHolderName, r.bankAccountNumber, r.bankBalance, r.issues, r.lastIn1Time, r.lastIn1Name, r.lastIn1Amount, r.lastIn2Time, r.lastIn2Name, r.lastIn2Amount].join(',')
+        [r.dateIssued, r.bankName, r.bankAccountHolderName, r.bankAccountNumber, r.bankBalance, r.issues, r.lastIn1Time, r.lastIn1Name, r.lastIn1Amount, r.lastIn2Time, r.lastIn2Name, r.lastIn2Amount, r.lastIn3Time, r.lastIn3Name, r.lastIn3Amount, r.lastOut1Time, r.lastOut1Name, r.lastOut1Amount, r.lastOut2Time, r.lastOut2Name, r.lastOut2Amount, r.lastOut3Time, r.lastOut3Name, r.lastOut3Amount].join(',')
       )
     ].join('\n');
 
@@ -291,6 +303,39 @@ export function LastInOut() {
               </div>
 
               <div className="border-t pt-4">
+                <h3 className="font-semibold mb-3">Last In (3)</h3>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="lastIn3Time">Time</Label>
+                    <Input
+                      id="lastIn3Time"
+                      placeholder="08:00 AM"
+                      value={form.lastIn3Time}
+                      onChange={(e) => setForm({ ...form, lastIn3Time: e.target.value })}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="lastIn3Name">Name</Label>
+                    <Input
+                      id="lastIn3Name"
+                      placeholder="Eve"
+                      value={form.lastIn3Name}
+                      onChange={(e) => setForm({ ...form, lastIn3Name: e.target.value })}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="lastIn3Amount">Amount</Label>
+                    <Input
+                      id="lastIn3Amount"
+                      placeholder="$200"
+                      value={form.lastIn3Amount}
+                      onChange={(e) => setForm({ ...form, lastIn3Amount: e.target.value })}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t pt-4">
                 <h3 className="font-semibold mb-3">Last Out (1)</h3>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="grid gap-2">
@@ -355,6 +400,39 @@ export function LastInOut() {
                   </div>
                 </div>
               </div>
+
+              <div className="border-t pt-4">
+                <h3 className="font-semibold mb-3">Last Out (3)</h3>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="lastOut3Time">Time</Label>
+                    <Input
+                      id="lastOut3Time"
+                      placeholder="09:30 AM"
+                      value={form.lastOut3Time}
+                      onChange={(e) => setForm({ ...form, lastOut3Time: e.target.value })}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="lastOut3Name">Name</Label>
+                    <Input
+                      id="lastOut3Name"
+                      placeholder="Frank"
+                      value={form.lastOut3Name}
+                      onChange={(e) => setForm({ ...form, lastOut3Name: e.target.value })}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="lastOut3Amount">Amount</Label>
+                    <Input
+                      id="lastOut3Amount"
+                      placeholder="$350"
+                      value={form.lastOut3Amount}
+                      onChange={(e) => setForm({ ...form, lastOut3Amount: e.target.value })}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             <DialogFooter>
               <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
@@ -411,6 +489,16 @@ export function LastInOut() {
                 )
               },
               { 
+                key: 'lastIn3Time', 
+                label: 'Last In (3)',
+                render: (_, row) => (
+                  <div className="text-xs">
+                    <div>{row.lastIn3Time}</div>
+                    <div className="text-muted-foreground">{row.lastIn3Name} - {row.lastIn3Amount}</div>
+                  </div>
+                )
+              },
+              { 
                 key: 'lastOut1Time', 
                 label: 'Last Out (1)',
                 render: (_, row) => (
@@ -427,6 +515,16 @@ export function LastInOut() {
                   <div className="text-xs">
                     <div>{row.lastOut2Time}</div>
                     <div className="text-muted-foreground">{row.lastOut2Name} - {row.lastOut2Amount}</div>
+                  </div>
+                )
+              },
+              { 
+                key: 'lastOut3Time', 
+                label: 'Last Out (3)',
+                render: (_, row) => (
+                  <div className="text-xs">
+                    <div>{row.lastOut3Time}</div>
+                    <div className="text-muted-foreground">{row.lastOut3Name} - {row.lastOut3Amount}</div>
                   </div>
                 )
               },

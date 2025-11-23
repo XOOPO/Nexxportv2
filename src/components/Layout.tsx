@@ -2,6 +2,8 @@ import { Link, useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { BotAssistant } from '@/components/BotAssistant';
+import { VoiceChat } from '@/components/VoiceChat';
 import { 
   LayoutDashboard, 
   Mail, 
@@ -118,6 +120,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
         </main>
       </div>
+      <BotAssistant />
+      <VoiceChat />
     </div>
   );
 }

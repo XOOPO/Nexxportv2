@@ -10,7 +10,18 @@ import {
   DailyReport,
   WealthListing,
   LastInOut,
-  BankIssueFollowUp
+  BankIssueFollowUp,
+  sampleStockMails,
+  sampleBankAccounts,
+  sampleBankIssues,
+  sampleCOperations,
+  sampleTransactions,
+  sampleAgents,
+  sampleDownlines,
+  sampleDailyReports,
+  sampleWealthListings,
+  sampleLastInOuts,
+  sampleBankIssueFollowUps
 } from '@/lib/sampleData';
 
 interface DataContextType {
@@ -95,39 +106,84 @@ function saveToStorage<T>(key: string, data: T[]) {
 }
 
 export function DataProvider({ children }: { children: ReactNode }) {
-  const [stockMails, setStockMailsState] = useState<StockMail[]>(() => 
-    loadFromStorage(STORAGE_KEYS.STOCK_MAILS, [])
-  );
-  const [bankAccounts, setBankAccountsState] = useState<BankAccount[]>(() => 
-    loadFromStorage(STORAGE_KEYS.BANK_ACCOUNTS, [])
-  );
-  const [bankIssues, setBankIssuesState] = useState<BankIssue[]>(() => 
-    loadFromStorage(STORAGE_KEYS.BANK_ISSUES, [])
-  );
-  const [cOperations, setCOperationsState] = useState<COperation[]>(() => 
-    loadFromStorage(STORAGE_KEYS.C_OPERATIONS, [])
-  );
-  const [transactions, setTransactionsState] = useState<Transaction[]>(() => 
-    loadFromStorage(STORAGE_KEYS.TRANSACTIONS, [])
-  );
-  const [agents, setAgentsState] = useState<Agent[]>(() => 
-    loadFromStorage(STORAGE_KEYS.AGENTS, [])
-  );
-  const [downlines, setDownlinesState] = useState<Downline[]>(() => 
-    loadFromStorage(STORAGE_KEYS.DOWNLINES, [])
-  );
-  const [dailyReports, setDailyReportsState] = useState<DailyReport[]>(() => 
-    loadFromStorage(STORAGE_KEYS.DAILY_REPORTS, [])
-  );
-  const [wealthListings, setWealthListingsState] = useState<WealthListing[]>(() => 
-    loadFromStorage(STORAGE_KEYS.WEALTH_LISTINGS, [])
-  );
-  const [lastInOuts, setLastInOutsState] = useState<LastInOut[]>(() => 
-    loadFromStorage(STORAGE_KEYS.LAST_IN_OUTS, [])
-  );
-  const [bankIssueFollowUps, setBankIssueFollowUpsState] = useState<BankIssueFollowUp[]>(() => 
-    loadFromStorage(STORAGE_KEYS.BANK_ISSUE_FOLLOW_UPS, [])
-  );
+  const [stockMails, setStockMailsState] = useState<StockMail[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.STOCK_MAILS, sampleStockMails);
+    // Save sample data to storage if it was loaded
+    if (!localStorage.getItem(STORAGE_KEYS.STOCK_MAILS) && sampleStockMails.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.STOCK_MAILS, JSON.stringify(sampleStockMails));
+    }
+    return loaded;
+  });
+  const [bankAccounts, setBankAccountsState] = useState<BankAccount[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.BANK_ACCOUNTS, sampleBankAccounts);
+    if (!localStorage.getItem(STORAGE_KEYS.BANK_ACCOUNTS) && sampleBankAccounts.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.BANK_ACCOUNTS, JSON.stringify(sampleBankAccounts));
+    }
+    return loaded;
+  });
+  const [bankIssues, setBankIssuesState] = useState<BankIssue[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.BANK_ISSUES, sampleBankIssues);
+    if (!localStorage.getItem(STORAGE_KEYS.BANK_ISSUES) && sampleBankIssues.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.BANK_ISSUES, JSON.stringify(sampleBankIssues));
+    }
+    return loaded;
+  });
+  const [cOperations, setCOperationsState] = useState<COperation[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.C_OPERATIONS, sampleCOperations);
+    if (!localStorage.getItem(STORAGE_KEYS.C_OPERATIONS) && sampleCOperations.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.C_OPERATIONS, JSON.stringify(sampleCOperations));
+    }
+    return loaded;
+  });
+  const [transactions, setTransactionsState] = useState<Transaction[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.TRANSACTIONS, sampleTransactions);
+    if (!localStorage.getItem(STORAGE_KEYS.TRANSACTIONS) && sampleTransactions.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.TRANSACTIONS, JSON.stringify(sampleTransactions));
+    }
+    return loaded;
+  });
+  const [agents, setAgentsState] = useState<Agent[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.AGENTS, sampleAgents);
+    if (!localStorage.getItem(STORAGE_KEYS.AGENTS) && sampleAgents.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.AGENTS, JSON.stringify(sampleAgents));
+    }
+    return loaded;
+  });
+  const [downlines, setDownlinesState] = useState<Downline[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.DOWNLINES, sampleDownlines);
+    if (!localStorage.getItem(STORAGE_KEYS.DOWNLINES) && sampleDownlines.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.DOWNLINES, JSON.stringify(sampleDownlines));
+    }
+    return loaded;
+  });
+  const [dailyReports, setDailyReportsState] = useState<DailyReport[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.DAILY_REPORTS, sampleDailyReports);
+    if (!localStorage.getItem(STORAGE_KEYS.DAILY_REPORTS) && sampleDailyReports.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.DAILY_REPORTS, JSON.stringify(sampleDailyReports));
+    }
+    return loaded;
+  });
+  const [wealthListings, setWealthListingsState] = useState<WealthListing[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.WEALTH_LISTINGS, sampleWealthListings);
+    if (!localStorage.getItem(STORAGE_KEYS.WEALTH_LISTINGS) && sampleWealthListings.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.WEALTH_LISTINGS, JSON.stringify(sampleWealthListings));
+    }
+    return loaded;
+  });
+  const [lastInOuts, setLastInOutsState] = useState<LastInOut[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.LAST_IN_OUTS, sampleLastInOuts);
+    if (!localStorage.getItem(STORAGE_KEYS.LAST_IN_OUTS) && sampleLastInOuts.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.LAST_IN_OUTS, JSON.stringify(sampleLastInOuts));
+    }
+    return loaded;
+  });
+  const [bankIssueFollowUps, setBankIssueFollowUpsState] = useState<BankIssueFollowUp[]>(() => {
+    const loaded = loadFromStorage(STORAGE_KEYS.BANK_ISSUE_FOLLOW_UPS, sampleBankIssueFollowUps);
+    if (!localStorage.getItem(STORAGE_KEYS.BANK_ISSUE_FOLLOW_UPS) && sampleBankIssueFollowUps.length > 0) {
+      localStorage.setItem(STORAGE_KEYS.BANK_ISSUE_FOLLOW_UPS, JSON.stringify(sampleBankIssueFollowUps));
+    }
+    return loaded;
+  });
 
   // Wrapper functions that save to storage
   const setStockMails = (value: StockMail[] | ((prev: StockMail[]) => StockMail[])) => {

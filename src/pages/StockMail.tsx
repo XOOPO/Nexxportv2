@@ -20,8 +20,8 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 
-const HANDLER_OPTIONS = ['Nicholas', 'Xan', 'Danial', 'Yulita', 'Eric', 'Matthew', 'Yohana', 'Michelle', 'Sohail'];
-const STATUS_OPTIONS = ['NEW', 'USING', 'INACTIVE', 'Need Verify'];
+const HANDLER_OPTIONS = ['YULITA', 'ERIC', 'REBECCA', 'Nicholas', 'Xan', 'Danial', 'Matthew', 'Yohana', 'Michelle', 'Sohail'];
+const STATUS_OPTIONS = ['NEW', 'USING', 'NEED VERIFY', 'INACTIVE'];
 const STOCK_MAIL_PIN = 'AAaa1234';
 
 export function StockMail() {
@@ -40,7 +40,7 @@ export function StockMail() {
       total: mails.length,
       new: mails.filter(m => m.status === 'NEW').length,
       using: mails.filter(m => m.status === 'USING').length,
-      needVerify: mails.filter(m => m.status === 'Need Verify').length,
+      needVerify: mails.filter(m => m.status === 'NEED VERIFY').length,
       internal: mails.filter(m => m.assign === 'INTERNAL').length,
       external: mails.filter(m => m.assign === 'EXTERNAL').length,
     };
@@ -405,7 +405,7 @@ export function StockMail() {
                 key: 'status', 
                 label: 'Status',
                 render: (value) => (
-                  <Badge variant={value === 'USING' ? 'default' : value === 'Need Verify' ? 'outline' : 'secondary'}>
+                  <Badge variant={value === 'USING' ? 'default' : value === 'NEED VERIFY' ? 'outline' : 'secondary'}>
                     {value}
                   </Badge>
                 )

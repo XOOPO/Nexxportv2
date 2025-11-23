@@ -1,19 +1,14 @@
-import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react-swc";
-import { resolve } from 'path';
 import { defineConfig } from "vite";
-
-const projectRoot = process.env.PROJECT_ROOT || import.meta.dirname;
+import react from "@vitejs/plugin-react-swc";
+import tailwindcss from "@tailwindcss/vite";
+import { resolve } from "path";
 
 export default defineConfig({
-  base: "/Nexxport/",  
+  base: "/Nexxport/",
   plugins: [react(), tailwindcss()],
-  build: {
-    sourcemap: true,
-  },
   resolve: {
     alias: {
-      '@': resolve(projectRoot, 'src'),
+      "@": resolve(__dirname, "src"),
     },
   },
 });

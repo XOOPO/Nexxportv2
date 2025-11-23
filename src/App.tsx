@@ -1,36 +1,39 @@
-import { Route, Router, Switch } from "wouter";
-import { AuthProvider } from '@/contexts/AuthContext';
-import { DataProvider } from '@/contexts/DataContext';
-import { ThemeProvider } from '@/components/ThemeProvider';
-import { Toaster } from '@/components/ui/sonner';
-import { AppLayout } from '@/components/Layout';
-import { RequireAuth } from '@/components/RequireAuth';
-import { Login } from '@/pages/Login';
-import { Dashboard } from '@/pages/Dashboard';
-import { StockMail } from '@/pages/StockMail';
-import { BankAccounts } from '@/pages/BankAccounts';
-import { BankIssues } from '@/pages/BankIssues';
-import { LastInOut } from '@/pages/LastInOut';
-import { BankIssueFollowUp } from '@/pages/BankIssueFollowUp';
-import { COperation } from '@/pages/COperation';
-import { TransactionSummary } from '@/pages/TransactionSummary';
-import { AgentListing } from '@/pages/AgentListing';
-import { AgentDownlines } from '@/pages/AgentDownlines';
-import { DailyReport } from '@/pages/DailyReport';
-import { WealthPlus } from '@/pages/WealthPlus';
-import { Analytics } from '@/pages/Analytics';
-import { Settings } from '@/pages/Settings';
+import { Route, Switch } from "wouter";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { DataProvider } from "@/contexts/DataContext";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
+import { AppLayout } from "@/components/Layout";
+import { RequireAuth } from "@/components/RequireAuth";
+
+import {
+  Login,
+  Dashboard,
+  StockMail,
+  BankAccounts,
+  BankIssues,
+  LastInOut,
+  BankIssueFollowUp,
+  COperation,
+  TransactionSummary,
+  AgentListing,
+  AgentDownlines,
+  DailyReport,
+  WealthPlus,
+  Analytics,
+  Settings,
+} from "@/pages";
 
 function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
         <DataProvider>
-        <Router base="/">
           <Switch>
             <Route path="/login">
               <Login />
             </Route>
+
             <Route path="/">
               <RequireAuth>
                 <AppLayout>
@@ -38,6 +41,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/stock-mail">
               <RequireAuth>
                 <AppLayout>
@@ -45,6 +49,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/bank-accounts">
               <RequireAuth>
                 <AppLayout>
@@ -52,6 +57,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/bank-issues">
               <RequireAuth>
                 <AppLayout>
@@ -59,6 +65,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/bank-issues-last-in-out">
               <RequireAuth>
                 <AppLayout>
@@ -66,6 +73,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/bank-issues-follow-up">
               <RequireAuth>
                 <AppLayout>
@@ -73,6 +81,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/c-operation">
               <RequireAuth>
                 <AppLayout>
@@ -80,6 +89,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/transaction-summary">
               <RequireAuth>
                 <AppLayout>
@@ -87,6 +97,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/agent-listing">
               <RequireAuth>
                 <AppLayout>
@@ -94,6 +105,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/agent-downlines">
               <RequireAuth>
                 <AppLayout>
@@ -101,6 +113,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/daily-report">
               <RequireAuth>
                 <AppLayout>
@@ -108,6 +121,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/wealth-plus">
               <RequireAuth>
                 <AppLayout>
@@ -115,6 +129,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/analytics">
               <RequireAuth>
                 <AppLayout>
@@ -122,6 +137,7 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route path="/settings">
               <RequireAuth>
                 <AppLayout>
@@ -129,17 +145,18 @@ function App() {
                 </AppLayout>
               </RequireAuth>
             </Route>
+
             <Route>
               <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
                   <h1 className="text-4xl font-bold mb-2">404</h1>
-                  <p className="text-muted-foreground">Sorry, this page doesn't exist.</p>
+                  <p className="text-muted-foreground">Page Not Found</p>
                 </div>
               </div>
             </Route>
           </Switch>
-        </Router>
-        <Toaster />
+
+          <Toaster />
         </DataProvider>
       </AuthProvider>
     </ThemeProvider>

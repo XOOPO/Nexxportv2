@@ -50,7 +50,8 @@ export function BankIssues() {
     lastBalance: '',
     status: 'PENDING',
     handler: '',
-    dateReported: new Date().toISOString().split('T')[0]
+    dateReported: new Date().toISOString().split('T')[0],
+    device: ''
   });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -87,7 +88,8 @@ export function BankIssues() {
       lastBalance: '',
       status: 'PENDING',
       handler: '',
-      dateReported: new Date().toISOString().split('T')[0]
+      dateReported: new Date().toISOString().split('T')[0],
+      device: ''
     });
     setEditingId(null);
   };
@@ -123,7 +125,8 @@ export function BankIssues() {
       lastBalance: issue.lastBalance,
       status: issue.status,
       handler: issue.handler,
-      dateReported: issue.dateReported
+      dateReported: issue.dateReported,
+      device: issue.device || ''
     });
     setEditingId(issue.id);
     setIsDialogOpen(true);
@@ -135,11 +138,11 @@ export function BankIssues() {
   };
 
   const exportToCSV = () => {
-    const headers = ['Bank Name', 'Account Holder', 'Account Number', 'Issue', 'Last Balance', 'Status', 'Handler', 'Date Reported'];
+    const headers = ['Bank Name', 'Account Holder', 'Account Number', 'Issue', 'Device', 'Last Balance', 'Status', 'Handler', 'Date Reported'];
     const csvData = [
       headers.join(','),
       ...filteredIssues.map(i => 
-        [i.bankName, i.accountHolder, i.accountNumber, i.issue, i.lastBalance, i.status, i.handler, i.dateReported].join(',')
+        [i.bankName, i.accountHolder, i.accountNumber, i.issue, i.device || '', i.lastBalance, i.status, i.handler, i.dateReported].join(',')
       )
     ].join('\n');
 
@@ -216,6 +219,15 @@ export function BankIssues() {
                     ))}
                   </SelectContent>
                 </Select>
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="device">Device</Label>
+                <Input
+                  id="device"
+                  placeholder="F104"
+                  value={form.device}
+                  onChange={(e) => setForm({ ...form, device: e.target.value })}
+                />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="lastBalance">Last Balance *</Label>
@@ -379,6 +391,7 @@ export function BankIssues() {
               { key: 'accountHolder', label: 'Account Holder' },
               { key: 'accountNumber', label: 'Account Number' },
               { key: 'issue', label: 'Issue' },
+              { key: 'device', label: 'Device' },
               { key: 'lastBalance', label: 'Last Balance' },
               { 
                 key: 'status', 
@@ -423,7 +436,7 @@ export function BankIssues() {
               }
             ]}
             data={filteredIssues}
-            searchKeys={['bankName', 'accountHolder', 'accountNumber', 'issue', 'handler']}
+            searchKeys={['bankName', 'accountHolder', 'accountNumber', 'issue', 'device', 'handler']}
             pageSize={10}
           />
         </CardContent>
