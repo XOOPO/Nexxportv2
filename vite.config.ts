@@ -5,8 +5,8 @@ import { defineConfig } from "vite";
 
 const projectRoot = process.env.PROJECT_ROOT || import.meta.dirname
 
-// https://vite.dev/config/
 export default defineConfig({
+  base: '/Nexxport/', // <<< WAJIB untuk GitHub Pages
   plugins: [react(), tailwindcss()],
   build: {
     sourcemap: true,
@@ -16,4 +16,4 @@ export default defineConfig({
       '@': resolve(projectRoot, 'src')
     }
   },
-})
+});
