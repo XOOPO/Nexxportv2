@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { AppLayout } from "@/components/Layout";
 import { RequireAuth } from "@/components/RequireAuth";
 
-// PAGES (IMPORT LENGKAP)
+// Pages
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import StockMail from "@/pages/StockMail";
@@ -14,7 +14,6 @@ import BankAccounts from "@/pages/BankAccounts";
 import BankIssues from "@/pages/BankIssues";
 import Settings from "@/pages/Settings";
 
-// Yang tadi error karena TIDAK DI-IMPORT
 import LastInOut from "@/pages/LastInOut";
 import BankIssueFollowUp from "@/pages/BankIssueFollowUp";
 import COperation from "@/pages/COperation";
@@ -25,7 +24,7 @@ import DailyReport from "@/pages/DailyReport";
 import WealthPlus from "@/pages/WealthPlus";
 import Analytics from "@/pages/Analytics";
 
-function App() {
+export default function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
@@ -90,7 +89,7 @@ function App() {
               </RequireAuth>
             </Route>
 
-            {/* C-OPERATION */}
+            {/* C OPERATION */}
             <Route path="/c-operation">
               <RequireAuth>
                 <AppLayout>
@@ -179,5 +178,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;
