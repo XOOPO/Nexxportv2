@@ -412,3 +412,4 @@ export function BankIssueFollowUp() {
     </div>
   );
 }
+export default BankIssueFollowUp;

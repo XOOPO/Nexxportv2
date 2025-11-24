@@ -671,3 +671,4 @@ export function Settings() {
     </div>
   );
 }
+export default Setting;

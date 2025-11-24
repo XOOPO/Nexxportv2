@@ -524,3 +524,4 @@ export function WealthPlus() {
     </div>
   );
 }
+export default WealthPlus;

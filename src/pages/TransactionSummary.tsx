@@ -412,3 +412,4 @@ export function TransactionSummary() {
     </div>
   );
 }
+export default TransactionSummary;

@@ -221,3 +221,4 @@ export function DailyReport() {
     </div>
   );
 }
+export default DailyReport;

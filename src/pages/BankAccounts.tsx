@@ -525,3 +525,4 @@ export function BankAccounts() {
     </div>
   );
 }
+export default BankAccounts;

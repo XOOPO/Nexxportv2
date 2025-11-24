@@ -6,7 +6,7 @@ import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Router base="/Nexxport">
+    <Router base="/Nexxportv2">
       <App />
     </Router>
   </React.StrictMode>

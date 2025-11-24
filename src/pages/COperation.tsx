@@ -340,3 +340,4 @@ export function COperation() {
     </div>
   );
 }
+export default COperation;

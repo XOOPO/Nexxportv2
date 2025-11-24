@@ -12,16 +12,14 @@ import {
   StockMail,
   BankAccounts,
   BankIssues,
-  LastInOut,
-  BankIssueFollowUp,
-  COperation,
-  TransactionSummary,
-  AgentListing,
-  AgentDownlines,
-  DailyReport,
-  WealthPlus,
-  Analytics,
-  Settings,
+  Supplier,
+  Clients,
+  PurchaseOrders,
+  BankReconciliations,
+  Transactions,
+  Employees,
+  ActivityLogs,
+  Settings
 } from "@/pages";
 
 function App() {

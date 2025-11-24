@@ -564,3 +564,4 @@ export function LastInOut() {
     </div>
   );
 }
+export default LastInOut;

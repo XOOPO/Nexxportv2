@@ -348,3 +348,4 @@ export function AgentListing() {
     </div>
   );
 }
+export default AgentListing;

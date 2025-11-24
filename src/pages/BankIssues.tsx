@@ -444,3 +444,4 @@ export function BankIssues() {
     </div>
   );
 }
+export default BankIssues;

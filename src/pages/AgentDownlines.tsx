@@ -269,3 +269,4 @@ export function AgentDownlines() {
     </div>
   );
 }
+export default AgentDownlines;

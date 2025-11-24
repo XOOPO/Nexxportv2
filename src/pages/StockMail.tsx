@@ -456,3 +456,4 @@ export function StockMail() {
     </div>
   );
 }
+export default StockMail;
