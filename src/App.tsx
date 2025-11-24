@@ -6,21 +6,24 @@ import { Toaster } from "@/components/ui/sonner";
 import { AppLayout } from "@/components/Layout";
 import { RequireAuth } from "@/components/RequireAuth";
 
-import {
-  Login,
-  Dashboard,
-  StockMail,
-  BankAccounts,
-  BankIssues,
-  Supplier,
-  Clients,
-  PurchaseOrders,
-  BankReconciliations,
-  Transactions,
-  Employees,
-  ActivityLogs,
-  Settings
-} from "@/pages";
+// PAGES (IMPORT LENGKAP)
+import Login from "@/pages/Login";
+import Dashboard from "@/pages/Dashboard";
+import StockMail from "@/pages/StockMail";
+import BankAccounts from "@/pages/BankAccounts";
+import BankIssues from "@/pages/BankIssues";
+import Settings from "@/pages/Settings";
+
+// Yang tadi error karena TIDAK DI-IMPORT
+import LastInOut from "@/pages/LastInOut";
+import BankIssueFollowUp from "@/pages/BankIssueFollowUp";
+import COperation from "@/pages/COperation";
+import TransactionSummary from "@/pages/TransactionSummary";
+import AgentListing from "@/pages/AgentListing";
+import AgentDownlines from "@/pages/AgentDownlines";
+import DailyReport from "@/pages/DailyReport";
+import WealthPlus from "@/pages/WealthPlus";
+import Analytics from "@/pages/Analytics";
 
 function App() {
   return (
@@ -28,10 +31,12 @@ function App() {
       <AuthProvider>
         <DataProvider>
           <Switch>
+            {/* LOGIN */}
             <Route path="/login">
               <Login />
             </Route>
 
+            {/* DASHBOARD */}
             <Route path="/">
               <RequireAuth>
                 <AppLayout>
@@ -40,6 +45,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* STOCK MAIL */}
             <Route path="/stock-mail">
               <RequireAuth>
                 <AppLayout>
@@ -48,6 +54,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* BANK ACCOUNTS */}
             <Route path="/bank-accounts">
               <RequireAuth>
                 <AppLayout>
@@ -56,6 +63,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* BANK ISSUES */}
             <Route path="/bank-issues">
               <RequireAuth>
                 <AppLayout>
@@ -64,7 +72,8 @@ function App() {
               </RequireAuth>
             </Route>
 
-            <Route path="/bank-issues-last-in-out">
+            {/* LAST IN OUT */}
+            <Route path="/last-in-out">
               <RequireAuth>
                 <AppLayout>
                   <LastInOut />
@@ -72,6 +81,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* BANK ISSUE FOLLOW UP */}
             <Route path="/bank-issues-follow-up">
               <RequireAuth>
                 <AppLayout>
@@ -80,6 +90,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* C-OPERATION */}
             <Route path="/c-operation">
               <RequireAuth>
                 <AppLayout>
@@ -88,6 +99,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* TRANSACTION SUMMARY */}
             <Route path="/transaction-summary">
               <RequireAuth>
                 <AppLayout>
@@ -96,6 +108,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* AGENT LISTING */}
             <Route path="/agent-listing">
               <RequireAuth>
                 <AppLayout>
@@ -104,6 +117,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* AGENT DOWNLINES */}
             <Route path="/agent-downlines">
               <RequireAuth>
                 <AppLayout>
@@ -112,6 +126,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* DAILY REPORT */}
             <Route path="/daily-report">
               <RequireAuth>
                 <AppLayout>
@@ -120,6 +135,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* WEALTH PLUS */}
             <Route path="/wealth-plus">
               <RequireAuth>
                 <AppLayout>
@@ -128,6 +144,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* ANALYTICS */}
             <Route path="/analytics">
               <RequireAuth>
                 <AppLayout>
@@ -136,6 +153,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* SETTINGS */}
             <Route path="/settings">
               <RequireAuth>
                 <AppLayout>
@@ -144,6 +162,7 @@ function App() {
               </RequireAuth>
             </Route>
 
+            {/* 404 */}
             <Route>
               <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
