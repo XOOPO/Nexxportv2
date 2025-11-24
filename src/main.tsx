@@ -6,7 +6,7 @@ import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Router> 
+    <Router base="/">
       <App />
     </Router>
   </React.StrictMode>
